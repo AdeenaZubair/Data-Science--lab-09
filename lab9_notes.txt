@@ -1,0 +1,68 @@
+WEEK 09 - DATA SCIENCE LAB RESULTS
+==================================
+
+TASK 1: ESTIMATE HOUSING PRICES NEAR TRANSIT
+Number of transactions: 414
+Slope: -0.7262
+Intercept: 45.8514
+Predicted price at 500 meters: 42.2204
+
+Explanation: For every additional 100 meters, the predicted price changes by -0.73 price units on average.
+
+
+TASK 2: COMPARE MODELS FOR YACHT RESISTANCE
+============================================
+
+Linear Regression Fold RMSEs:
+Fold 1: 8.1604
+Fold 2: 10.5685
+Fold 3: 9.8397
+Fold 4: 8.3839
+Fold 5: 7.7777
+Mean Linear RMSE: 8.9460
+
+Degree-2 Polynomial Regression Fold RMSEs:
+Fold 1: 3.9335
+Fold 2: 4.5949
+Fold 3: 4.4468
+Fold 4: 4.4931
+Fold 5: 3.5038
+Mean Polynomial RMSE: 4.1944
+
+Better model: Degree-2 Polynomial Regression
+
+Explanation: The model with the lower mean RMSE provides better average prediction accuracy. The row-based split may place experiments from the same hull in different folds.
+
+
+TASK 3: TUNE A CONCRETE STRENGTH MODEL
+=======================================
+Original rows: 1030
+Rows after removing duplicates: 1005
+Training rows: 804
+Testing rows: 201
+
+Baseline Linear Regression:
+Mean CV RMSE: 10.2019 MPa
+
+Top Three Settings:
+Rank: 1, Degree: 3, Alpha: 0.1, Mean CV RMSE: 6.0939 MPa
+Rank: 2, Degree: 3, Alpha: 0.01, Mean CV RMSE: 6.1635 MPa
+Rank: 3, Degree: 3, Alpha: 1.0, Mean CV RMSE: 6.2738 MPa
+
+Tuned Model:
+Best parameters: {'polynomial__degree': 3, 'ridge__alpha': 0.1}
+Mean CV RMSE: 6.0939 MPa
+
+Test Performance:
+Test RMSE: 6.5167 MPa
+Test MAE: 4.6697 MPa
+
+Model Comparison:
+Baseline mean CV RMSE: 10.2019
+Tuned mean CV RMSE: 6.0939
+
+Explanation: The tuned model is better when its mean CV RMSE is lower than the baseline model.
+
+Degree-2 interaction: A product of two different input features represents an interaction term.
+
+Scaling belongs inside the pipeline because it must be fitted only on the training portion of each CV fold. This prevents data leakage.
